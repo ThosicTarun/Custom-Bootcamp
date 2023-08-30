@@ -1,0 +1,47 @@
+Big Data: 
+	It is high volume, high velocity, and high variety information assets that requires new forms of processing to enable enhanced decision making ,insight, discovery and process optimization. Big data process using parallel processing or distributed processing  by distributive processing the data in multiple machines.
+
+Batch processing:
+	when data size is known and finite
+
+Stream processing:
+ when data is obtained in real time , infinite, unknown size and continuous
+
+Hadoop typically runs on linux operating systems
+HDFS: Hadoop Distributed File System.
+
+Data Warehouse:
+	• Stores data as objects
+	• Structured Data
+	• Data modelling
+	• Fixed schema
+	• ACID properties
+	A data warehouse is a repository for already structured data that is used for querying and analyzing data for specific purposes.
+	
+	
+Data Lake:
+	 a data lake is a storage repository designed to capture and store large amounts of all types of raw data, including structured, semi-structured, and unstructured data.
+	
+Lake House:
+	 A lake house is a type of data architecture that combines the best elements of data lakes and data warehouses.
+
+Pyspark, Python API for Apache spark:
+	In memory distributed engine that allows you process data efficiently in a  distributed fashion
+
+Capital Expenditure(Capex):
+	• The upfront spending of money on spending physical infrastructure
+	• Costs from CapEx have a value that reduces over time
+Operational Expenditure (OpEx):
+	OPEX refers to funds needed to run day-to-day operations.
+
+{Software as a service (SaaS)
+{Platform as a service (PaaS)
+{Infrastructure as a service (IaaS)}}
+
+A resource group is a container to manage and aggregate resources in a single unit.
+
+
+
+
+
+
