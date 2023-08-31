@@ -1,0 +1,21 @@
+Introduction to SQL
+Schemas
+DDL Statements
+Single database:
+Elastic Pool: Automatically scales up and down
+Azure AD: Azure Active Directory
+TLS : Transport Layer Security
+DDL:Data Definition Language(create)
+DML:Data Manipulation Language (update,delete, insert)
+DCL: Data Control Language (grant, revoke) (grant/revoke select/insert/delete on table_name for user_name )
+Schema: Logical Grouping Tables
+DROP Table : entire table gets deleted along with records
+Truncate Table: All the records gets deleted but table structure will remain.
+Delete : it is for deleting specific records with the help of where clause.
+
+DBO: default schema
+
+Server>database>schema>table
+
+
+Having is used with groupby clause.
