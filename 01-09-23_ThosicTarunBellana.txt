@@ -1,0 +1,20 @@
+Types of Joins:
+Inner join
+Left join
+Right join
+Outer join
+Cross join
+Self join
+
+Intersection and Subqueries
+
+working with :
+	• Stored Procedures
+	• Views
+	• Functions
+	• Union
+	• Union All
+
+
+Indexing ( Heaps, Clustered and Non-Clustered Indexes , Column store Indexes )
+	
