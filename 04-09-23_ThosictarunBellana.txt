@@ -1,0 +1,11 @@
+1.Creating Azure Storage Account and Gen2 Storage account
+2.Locally Redundant storage (3 Copies)
+3.Zone Redundant Storage (3 Copies in different zones in a region)
+4.Geo redundant storage with and without random access ( locally redundant in primary and secondary regions with 3 Copies in each region, total 6 copies )
+5. Geo-Zone Redundant storage ( 6 Copies )
+6. Azure storage tiers : hot,cool,cold,archive.
+7.Creating containers, tables, queries, fileshares.
+8.connecting a virtual machine for a fileshare 
+9.Total pricing calculator in azure
+10.Total cost of ownership (TCO) calculator of azure with all cost vizualizations.
+11. Hosting a Static Web Page through Azure Storage Account.
