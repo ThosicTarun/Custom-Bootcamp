@@ -1,0 +1,23 @@
+SAS : Shared Access Signature
+Azure key vault, Access Key
+Secrets
+Introduction to azure data factory (ADF):
+Extract -> Transform -> Load (E T L)
+major transformation is done by Azure Data Bricks
+Extract and load are majorly done by Azure Data Factory
+ADF Components :
+	Pipelines - One or more Activities
+	Activities
+	Datasets 
+	Linked Services - used to access low level through high level
+	Integration Runtime - it gives access to the high level to the machine
+		1. Azure auto resolve
+		2. Self Hosted (S.H) (On-premises or private network)
+		3. Azure SSIS (SQL Server Integration Services)
+	Triggers
+	Data Flow	
+
+Integration runtime -> Linked service -> Datasets
+ (Machine)		(Drive)		   
+
+Creating Integration runtime , Linked Services, DataSets, Pipelines
