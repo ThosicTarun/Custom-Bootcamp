@@ -1,0 +1,10 @@
+Meta Data : It is the data that provides information about other data
+Pipeline -> Activities
+Monitoring Pipeline
+Debugging
+Control Flow
+Get Meta data activity
+Iteratives
+For Each
+copy data activities
+Parameters and Variables for source and sink (Destination)
