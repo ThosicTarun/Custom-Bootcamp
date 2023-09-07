@@ -1,0 +1,14 @@
+source transformation
+sink transformation
+for Each : For multiple files
+Data Bricks (For Data Transformation) work based on Spark 
+only the file name is parameterized
+For Each Activity
+Web Activity
+Data flow activity
+surrogate key
+conditional split
+Derived Column
+Aggregate 
+Join
+Change Data Capture : (Inserts , Updates, Deletes).
