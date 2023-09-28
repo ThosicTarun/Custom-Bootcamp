@@ -1,0 +1,13 @@
+Structured Streaming
+Append, Complete, Update
+DBFS: Databricks File System
+describe history
+Table providers : Parquet and Delta
+
+Parquet table doesn't support delete operation
+Single Source of Truth
+
+Raw/Bronze -> Silver -> Gold
+JDBC : Java Database Connectivity
+Unity Catalog
+metastore->

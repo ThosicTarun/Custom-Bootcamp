@@ -1,0 +1,575 @@
+labuser@ip-172-31-14-241:~$ sudo systemctl startdocker
+Unknown operation startdocker.
+labuser@ip-172-31-14-241:~$ sudo systemctl start docker
+labuser@ip-172-31-14-241:~$ docker ps
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json: dial unix /var/run/docker.sock: connect: permission denied
+labuser@ip-172-31-14-241:~$ sudo docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+labuser@ip-172-31-14-241:~$ cd Desktop
+labuser@ip-172-31-14-241:~/Desktop$ cd 'New Folder'
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker build -t python-app
+"docker build" requires exactly 1 argument.
+See 'docker build --help'.
+
+Usage:  docker build [OPTIONS] PATH | URL | -
+
+Build an image from a Dockerfile
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker build -t python-app .
+Sending build context to Docker daemon  3.584kB
+Step 1/7 : FROM python:3.8-slim-buster
+3.8-slim-buster: Pulling from library/python
+8b91b88d5577: Pull complete 
+824416e23423: Pull complete 
+8f777578c172: Pull complete 
+cbfea27109a8: Pull complete 
+276dfcf5deff: Pull complete 
+Digest: sha256:8799b0564103a9f36cfb8a8e1c562e11a9a6f2e3bb214e2adc23982b36a04511
+Status: Downloaded newer image for python:3.8-slim-buster
+ ---> addd6962740a
+Step 2/7 : WORKDIR /app
+ ---> Running in ed74e4a72014
+Removing intermediate container ed74e4a72014
+ ---> e2e4658ebbce
+Step 3/7 : COPY . /app
+ ---> 73899bc822b3
+Step 4/7 : RUN pip install -r requirements.txt
+ ---> Running in 1093bd3addf5
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 23.0.1 -> 23.2.1
+[notice] To update, run: pip install --upgrade pip
+Removing intermediate container 1093bd3addf5
+ ---> 352319916951
+Step 5/7 : EXPOSE 80
+ ---> Running in 0b4611249a18
+Removing intermediate container 0b4611249a18
+ ---> 17706484d1e3
+Step 6/7 : ENV NAME World
+ ---> Running in 99bfd8274f2c
+Removing intermediate container 99bfd8274f2c
+ ---> 438a79b75f81
+Step 7/7 : CMD ["python", "app.py"]
+ ---> Running in 14a3e6d8cff2
+Removing intermediate container 14a3e6d8cff2
+ ---> 88bb5fb19656
+Successfully built 88bb5fb19656
+Successfully tagged python-app:latest
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker build -t python-app .
+Sending build context to Docker daemon  4.096kB
+Step 1/7 : FROM python:3.8-slim-buster
+ ---> addd6962740a
+Step 2/7 : WORKDIR /app
+ ---> Using cache
+ ---> e2e4658ebbce
+Step 3/7 : COPY . /app
+ ---> 2f6ffcf63b7b
+Step 4/7 : RUN pip install -r requirements.txt
+ ---> Running in e4ec8754cc6e
+Collecting Flask==2.0.1
+  Downloading Flask-2.0.1-py3-none-any.whl (94 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.8/94.8 kB 7.7 MB/s eta 0:00:00
+Collecting Werkzeug>=2.0
+  Downloading werkzeug-2.3.7-py3-none-any.whl (242 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 242.2/242.2 kB 19.9 MB/s eta 0:00:00
+Collecting click>=7.1.2
+  Downloading click-8.1.7-py3-none-any.whl (97 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.9/97.9 kB 10.8 MB/s eta 0:00:00
+Collecting itsdangerous>=2.0
+  Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+Collecting Jinja2>=3.0
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 14.5 MB/s eta 0:00:00
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.1.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Installing collected packages: MarkupSafe, itsdangerous, click, Werkzeug, Jinja2, Flask
+Successfully installed Flask-2.0.1 Jinja2-3.1.2 MarkupSafe-2.1.3 Werkzeug-2.3.7 click-8.1.7 itsdangerous-2.1.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 23.0.1 -> 23.2.1
+[notice] To update, run: pip install --upgrade pip
+Removing intermediate container e4ec8754cc6e
+ ---> 969a261139cd
+Step 5/7 : EXPOSE 80
+ ---> Running in 328f6d1704a4
+Removing intermediate container 328f6d1704a4
+ ---> 2fa99707369f
+Step 6/7 : ENV NAME World
+ ---> Running in 5c64f8f3b2de
+Removing intermediate container 5c64f8f3b2de
+ ---> ed013dc2d2e6
+Step 7/7 : CMD ["python", "app.py"]
+ ---> Running in 61854214cfb0
+Removing intermediate container 61854214cfb0
+ ---> c219fd417b50
+Successfully built c219fd417b50
+Successfully tagged python-app:latest
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ pip install --upgrade pip
+Collecting pip
+  Downloading pip-23.2.1-py3-none-any.whl (2.1 MB)
+     |████████████████████████████████| 2.1 MB 12.6 MB/s 
+Installing collected packages: pip
+  WARNING: The scripts pip, pip3, pip3.11 and pip3.8 are installed in '/home/labuser/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed pip-23.2.1
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker build -t python-app .
+Sending build context to Docker daemon  4.096kB
+Step 1/7 : FROM python:3.8-slim-buster
+ ---> addd6962740a
+Step 2/7 : WORKDIR /app
+ ---> Using cache
+ ---> e2e4658ebbce
+Step 3/7 : COPY . /app
+ ---> Using cache
+ ---> 2f6ffcf63b7b
+Step 4/7 : RUN pip install -r requirements.txt
+ ---> Using cache
+ ---> 969a261139cd
+Step 5/7 : EXPOSE 80
+ ---> Using cache
+ ---> 2fa99707369f
+Step 6/7 : ENV NAME World
+ ---> Using cache
+ ---> ed013dc2d2e6
+Step 7/7 : CMD ["python", "app.py"]
+ ---> Using cache
+ ---> c219fd417b50
+Successfully built c219fd417b50
+Successfully tagged python-app:latest
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker run -d -p 8000:8000 python-app
+6ad7862c0809dd0172d549fed603282ffd28d89b1fc13ebd36495a605c6282d0
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker run python-app
+Traceback (most recent call last):
+  File "app.py", line 1, in <module>
+    app.py
+NameError: name 'app' is not defined
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker run python-app
+Traceback (most recent call last):
+  File "app.py", line 1, in <module>
+    app.py
+NameError: name 'app' is not defined
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ ls
+Dockerfile  app.py  requirements.txt
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ cat Dockerfile 
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim-buster
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker build -t python-app .
+Sending build context to Docker daemon  4.096kB
+Step 1/7 : FROM python:3.8-slim-buster
+ ---> addd6962740a
+Step 2/7 : WORKDIR /app
+ ---> Using cache
+ ---> e2e4658ebbce
+Step 3/7 : COPY . /app
+ ---> 038049a459ad
+Step 4/7 : RUN pip install -r requirements.txt
+ ---> Running in c1046527a0b0
+Collecting Flask==2.0.1
+  Downloading Flask-2.0.1-py3-none-any.whl (94 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 94.8/94.8 kB 8.3 MB/s eta 0:00:00
+Collecting Jinja2>=3.0
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 8.3 MB/s eta 0:00:00
+Collecting itsdangerous>=2.0
+  Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+Collecting click>=7.1.2
+  Downloading click-8.1.7-py3-none-any.whl (97 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.9/97.9 kB 6.7 MB/s eta 0:00:00
+Collecting Werkzeug>=2.0
+  Downloading werkzeug-2.3.7-py3-none-any.whl (242 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 242.2/242.2 kB 14.1 MB/s eta 0:00:00
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.1.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Installing collected packages: MarkupSafe, itsdangerous, click, Werkzeug, Jinja2, Flask
+Successfully installed Flask-2.0.1 Jinja2-3.1.2 MarkupSafe-2.1.3 Werkzeug-2.3.7 click-8.1.7 itsdangerous-2.1.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 23.0.1 -> 23.2.1
+[notice] To update, run: pip install --upgrade pip
+Removing intermediate container c1046527a0b0
+ ---> 8afd471dc7f9
+Step 5/7 : EXPOSE 80
+ ---> Running in 72b6920d1687
+Removing intermediate container 72b6920d1687
+ ---> 1af12a1ea5f5
+Step 6/7 : ENV NAME World
+ ---> Running in 2cd9a15caafb
+Removing intermediate container 2cd9a15caafb
+ ---> a44db79fa675
+Step 7/7 : CMD ["python", "app.py"]
+ ---> Running in f9e4a2cb7c93
+Removing intermediate container f9e4a2cb7c93
+ ---> 01e21894a5a5
+Successfully built 01e21894a5a5
+Successfully tagged python-app:latest
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker run python-app
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:81
+ * Running on http://172.17.0.2:81
+Press CTRL+C to quit
+172.17.0.1 - - [28/Sep/2023 05:36:23] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [28/Sep/2023 05:36:23] "GET /favicon.ico HTTP/1.1" 404 -
+172.17.0.1 - - [28/Sep/2023 05:42:00] "GET / HTTP/1.1" 200 -
+^Clabuser@ip-172-31-14-241:~/Desktop/New Folder$ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+Hit:1 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal InRelease
+Get:2 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]                                                                                                                                                      
+Get:3 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]                                                                                                                                                    
+Hit:5 http://packages.microsoft.com/repos/code stable InRelease                                                                                                                                                                             
+Ign:4 https://pkg.jenkins.io/debian-stable binary/ InRelease                                                                                                                                                                                
+Hit:7 https://deb.nodesource.com/node_16.x focal InRelease                                                                                                                                                                                  
+Get:8 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]                                                                                             
+Hit:9 http://ppa.launchpad.net/ansible/ansible/ubuntu focal InRelease                                                                                   
+Get:6 https://pkg.jenkins.io/debian-stable binary/ Release [2044 B]                                                                                     
+Get:10 https://pkg.jenkins.io/debian-stable binary/ Release.gpg [833 B]                              
+Hit:11 https://dl.google.com/linux/chrome/deb stable InRelease                                               
+Hit:12 http://apt.postgresql.org/pub/repos/apt focal-pgdg InRelease            
+Get:13 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2852 kB]
+Get:14 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [275 kB]
+Get:15 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [2328 kB]
+Get:16 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1117 kB]
+Get:17 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [414 kB]
+Get:18 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [25.8 kB]
+Get:19 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [944 B]
+Get:20 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-backports/main amd64 DEP-11 Metadata [7996 B]
+Get:21 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [30.5 kB]
+Err:10 https://pkg.jenkins.io/debian-stable binary/ Release.gpg
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 5BA31D57EF5975CA
+Get:22 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [60.0 kB]
+Get:23 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [96.4 kB]
+Get:24 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [940 B]
+Fetched 7545 kB in 4s (1892 kB/s)
+Reading package lists... Done
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://pkg.jenkins.io/debian-stable binary/ Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 5BA31D57EF5975CA
+W: Failed to fetch http://pkg.jenkins.io/debian-stable/binary/Release.gpg  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 5BA31D57EF5975CA
+W: Some index files failed to download. They have been ignored, or old ones used instead.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+lsb-release is already the newest version (11.1.0ubuntu2).
+lsb-release set to manually installed.
+The following packages were automatically installed and are no longer required:
+  gyp javascript-common libc-ares2 libjs-inherits libjs-is-typedarray libjs-psl libjs-typedarray-to-buffer libpython2-stdlib libssl-dev libuv1-dev python-pkg-resources python2 python2-minimal python2.7 python2.7-minimal
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  dirmngr gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpg-wks-server gpgconf gpgsm gpgv libcurl4
+Suggested packages:
+  tor parcimonie xloadimage scdaemon
+The following packages will be upgraded:
+  apt-transport-https curl dirmngr gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpg-wks-server gpgconf gpgsm gpgv libcurl4
+14 upgraded, 0 newly installed, 0 to remove and 556 not upgraded.
+Need to get 2961 kB of archives.
+After this operation, 12.3 kB of additional disk space will be used.
+Get:1 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpg-wks-client amd64 2.2.19-3ubuntu2.2 [97.4 kB]
+Get:2 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 dirmngr amd64 2.2.19-3ubuntu2.2 [330 kB]
+Get:3 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpg-wks-server amd64 2.2.19-3ubuntu2.2 [90.2 kB]
+Get:4 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gnupg-utils amd64 2.2.19-3ubuntu2.2 [481 kB]
+Get:5 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpg-agent amd64 2.2.19-3ubuntu2.2 [232 kB]
+Get:6 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpg amd64 2.2.19-3ubuntu2.2 [482 kB]
+Get:7 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpgconf amd64 2.2.19-3ubuntu2.2 [124 kB]
+Get:8 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gnupg-l10n all 2.2.19-3ubuntu2.2 [51.7 kB]
+Get:9 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gnupg all 2.2.19-3ubuntu2.2 [259 kB]
+Get:10 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpgsm amd64 2.2.19-3ubuntu2.2 [217 kB]
+Get:11 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpgv amd64 2.2.19-3ubuntu2.2 [200 kB]
+Get:12 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 apt-transport-https all 2.0.9 [1704 B]
+Get:13 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 curl amd64 7.68.0-1ubuntu2.19 [161 kB]
+Get:14 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 libcurl4 amd64 7.68.0-1ubuntu2.19 [235 kB]
+Fetched 2961 kB in 0s (11.8 MB/s)
+(Reading database ... 278656 files and directories currently installed.)
+Preparing to unpack .../00-gpg-wks-client_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpg-wks-client (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../01-dirmngr_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking dirmngr (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../02-gpg-wks-server_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpg-wks-server (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../03-gnupg-utils_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gnupg-utils (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../04-gpg-agent_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpg-agent (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../05-gpg_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpg (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../06-gpgconf_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpgconf (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../07-gnupg-l10n_2.2.19-3ubuntu2.2_all.deb ...
+Unpacking gnupg-l10n (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../08-gnupg_2.2.19-3ubuntu2.2_all.deb ...
+Unpacking gnupg (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../09-gpgsm_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpgsm (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../10-gpgv_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpgv (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Setting up gpgv (2.2.19-3ubuntu2.2) ...
+(Reading database ... 278656 files and directories currently installed.)
+Preparing to unpack .../apt-transport-https_2.0.9_all.deb ...
+Unpacking apt-transport-https (2.0.9) over (2.0.6) ...
+Preparing to unpack .../curl_7.68.0-1ubuntu2.19_amd64.deb ...
+Unpacking curl (7.68.0-1ubuntu2.19) over (7.68.0-1ubuntu2.6) ...
+Preparing to unpack .../libcurl4_7.68.0-1ubuntu2.19_amd64.deb ...
+Unpacking libcurl4:amd64 (7.68.0-1ubuntu2.19) over (7.68.0-1ubuntu2.6) ...
+Setting up apt-transport-https (2.0.9) ...
+Setting up gnupg-l10n (2.2.19-3ubuntu2.2) ...
+Setting up gpgconf (2.2.19-3ubuntu2.2) ...
+Setting up libcurl4:amd64 (7.68.0-1ubuntu2.19) ...
+Setting up curl (7.68.0-1ubuntu2.19) ...
+Setting up gpg (2.2.19-3ubuntu2.2) ...
+Setting up gnupg-utils (2.2.19-3ubuntu2.2) ...
+Setting up gpg-agent (2.2.19-3ubuntu2.2) ...
+Setting up gpgsm (2.2.19-3ubuntu2.2) ...
+Setting up dirmngr (2.2.19-3ubuntu2.2) ...
+Setting up gpg-wks-server (2.2.19-3ubuntu2.2) ...
+Setting up gpg-wks-client (2.2.19-3ubuntu2.2) ...
+Setting up gnupg (2.2.19-3ubuntu2.2) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for install-info (6.7.0.dfsg.2-5) ...
+Hit:2 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal InRelease                                                                                                                                                
+Hit:3 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-updates InRelease                                                                                                                                                               
+Hit:4 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu focal-backports InRelease                                                                                                                                                             
+Hit:5 http://packages.microsoft.com/repos/code stable InRelease                                                                                                                                                                             
+Ign:1 https://pkg.jenkins.io/debian-stable binary/ InRelease                                                                                                                                                                                
+Hit:6 https://deb.nodesource.com/node_16.x focal InRelease                                                                                                                                                                                  
+Get:7 https://pkg.jenkins.io/debian-stable binary/ Release [2044 B]                                                                                                                                                                         
+Get:8 https://pkg.jenkins.io/debian-stable binary/ Release.gpg [833 B]                                                                                                                                                                      
+Hit:9 http://security.ubuntu.com/ubuntu focal-security InRelease                                                                                                                                                                            
+Hit:10 https://dl.google.com/linux/chrome/deb stable InRelease                                                                                                              
+Hit:11 http://ppa.launchpad.net/ansible/ansible/ubuntu focal InRelease                    
+Get:12 https://packages.microsoft.com/repos/azure-cli focal InRelease [3575 B]
+Hit:13 http://apt.postgresql.org/pub/repos/apt focal-pgdg InRelease
+Err:8 https://pkg.jenkins.io/debian-stable binary/ Release.gpg
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 5BA31D57EF5975CA
+Get:14 https://packages.microsoft.com/repos/azure-cli focal/main all Packages [4106 B]
+Get:15 https://packages.microsoft.com/repos/azure-cli focal/main amd64 Packages [1021 B]
+Fetched 9535 B in 4s (2591 B/s)    
+Reading package lists... Done
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://pkg.jenkins.io/debian-stable binary/ Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 5BA31D57EF5975CA
+W: Failed to fetch http://pkg.jenkins.io/debian-stable/binary/Release.gpg  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 5BA31D57EF5975CA
+W: Some index files failed to download. They have been ignored, or old ones used instead.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  gyp javascript-common libc-ares2 libjs-inherits libjs-is-typedarray libjs-psl libjs-typedarray-to-buffer libpython2-stdlib libssl-dev libuv1-dev python-pkg-resources python2 python2-minimal python2.7 python2.7-minimal
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  azure-cli
+0 upgraded, 1 newly installed, 0 to remove and 556 not upgraded.
+Need to get 50.6 MB of archives.
+After this operation, 614 MB of additional disk space will be used.
+Get:1 https://packages.microsoft.com/repos/azure-cli focal/main amd64 azure-cli amd64 2.53.0-1~focal [50.6 MB]
+Fetched 50.6 MB in 4s (13.5 MB/s)     
+Selecting previously unselected package azure-cli.
+(Reading database ... 278656 files and directories currently installed.)
+Preparing to unpack .../azure-cli_2.53.0-1~focal_amd64.deb ...
+Unpacking azure-cli (2.53.0-1~focal) ...
+Setting up azure-cli (2.53.0-1~focal) ...
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ az login
+A web browser has been opened at https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize. Please continue the login in the web browser. If no web browser is available or if the web browser fails to open, use device code flow with `az login --use-device-code`.
+Opening in existing browser session.
+libva error: vaGetDriverNameByIndex() failed with unknown libva error, driver_name = (null)
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "dce87315-8ffa-4a01-ab40-0de5a7214b2f",
+    "id": "6aeb8dcb-fea4-4d1f-987a-790e54a92fbf",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "npunext-1673505347357",
+    "state": "Enabled",
+    "tenantId": "dce87315-8ffa-4a01-ab40-0de5a7214b2f",
+    "user": {
+      "name": "Shellunext_1693422182729@npunext.onmicrosoft.com",
+      "type": "user"
+    }
+  }
+]
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ az group create --name thosictarunrg --location eastus
+{
+  "id": "/subscriptions/6aeb8dcb-fea4-4d1f-987a-790e54a92fbf/resourceGroups/thosictarunrg",
+  "location": "eastus",
+  "managedBy": null,
+  "name": "thosictarunrg",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ az acr create --name idaacr --resource-group thosictarunrg --location eastus
+the following arguments are required: --sku
+
+Examples from AI knowledge base:
+az acr create --location westus2 --name MyRegistry --resource-group MyResourceGroup --sku Classic
+Create an Azure Container Registry. (autogenerated)
+
+az acr create --name MyRegistry --resource-group MyResourceGroup --sku Standard
+Create a managed container registry with the Standard SKU.
+
+https://docs.microsoft.com/en-US/cli/azure/acr#az_acr_create
+Read more about the command in reference docs
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ az acr create --name idaacr --resource-group thosictarunrg --location eastus --sku standard
+Resource provider 'Microsoft.ContainerRegistry' used by this operation is not registered. We are registering for you.
+Registration succeeded.
+(AlreadyInUse) The registry DNS name idaacr.azurecr.io is already in use. You can check if the name is already claimed using following API: https://docs.microsoft.com/en-us/rest/api/containerregistry/registries/checknameavailability
+Code: AlreadyInUse
+Message: The registry DNS name idaacr.azurecr.io is already in use. You can check if the name is already claimed using following API: https://docs.microsoft.com/en-us/rest/api/containerregistry/registries/checknameavailability
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ az acr create --name thosictarunacr --resource-group thosictarunrg --location eastus --sku standard
+{
+  "adminUserEnabled": false,
+  "anonymousPullEnabled": false,
+  "creationDate": "2023-09-28T06:07:35.146260+00:00",
+  "dataEndpointEnabled": false,
+  "dataEndpointHostNames": [],
+  "encryption": {
+    "keyVaultProperties": null,
+    "status": "disabled"
+  },
+  "id": "/subscriptions/6aeb8dcb-fea4-4d1f-987a-790e54a92fbf/resourceGroups/thosictarunrg/providers/Microsoft.ContainerRegistry/registries/thosictarunacr",
+  "identity": null,
+  "location": "eastus",
+  "loginServer": "thosictarunacr.azurecr.io",
+  "name": "thosictarunacr",
+  "networkRuleBypassOptions": "AzureServices",
+  "networkRuleSet": null,
+  "policies": {
+    "azureAdAuthenticationAsArmPolicy": {
+      "status": "enabled"
+    },
+    "exportPolicy": {
+      "status": "enabled"
+    },
+    "quarantinePolicy": {
+      "status": "disabled"
+    },
+    "retentionPolicy": {
+      "days": 7,
+      "lastUpdatedTime": "2023-09-28T06:07:42.253031+00:00",
+      "status": "disabled"
+    },
+    "softDeletePolicy": {
+      "lastUpdatedTime": "2023-09-28T06:07:42.253068+00:00",
+      "retentionDays": 7,
+      "status": "disabled"
+    },
+    "trustPolicy": {
+      "status": "disabled",
+      "type": "Notary"
+    }
+  },
+  "privateEndpointConnections": [],
+  "provisioningState": "Succeeded",
+  "publicNetworkAccess": "Enabled",
+  "resourceGroup": "thosictarunrg",
+  "sku": {
+    "name": "Standard",
+    "tier": "Standard"
+  },
+  "status": null,
+  "systemData": {
+    "createdAt": "2023-09-28T06:07:35.146260+00:00",
+    "createdBy": "Shellunext_1693422182729@npunext.onmicrosoft.com",
+    "createdByType": "User",
+    "lastModifiedAt": "2023-09-28T06:07:35.146260+00:00",
+    "lastModifiedBy": "Shellunext_1693422182729@npunext.onmicrosoft.com",
+    "lastModifiedByType": "User"
+  },
+  "tags": {},
+  "type": "Microsoft.ContainerRegistry/registries",
+  "zoneRedundancy": "Disabled"
+}
+
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo az acr login --name thosictarunacr
+Unable to get AAD authorization tokens with message: Please run 'az login' to setup account.
+Unable to get admin user credentials with message: Please run 'az login' to setup account.
+Username: Shellunext_1693422182729@npunext.onmicrosoft.com
+Password: 
+Error response from daemon: Get https://thosictarunacr.azurecr.io/v2/: unauthorized: Application not registered with AAD.
+Login failed.
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo az acr login --name thosictarunacr
+Unable to get AAD authorization tokens with message: Please run 'az login' to setup account.
+Unable to get admin user credentials with message: Please run 'az login' to setup account.
+Username: ^Clabuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo az acr login --name thosictarunacr
+Unable to get AAD authorization tokens with message: Please run 'az login' to setup account.
+Unable to get admin user credentials with message: Please run 'az login' to setup account.
+Username: Shellunext_1693422182729@npunext.onmicrosoft.com
+Password: 
+Error response from daemon: Get https://thosictarunacr.azurecr.io/v2/: unauthorized: Application not registered with AAD.
+Login failed.
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker tag python-app thosictarunacr.io/python-app:v1
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker push python-app thosictarunacr.io/python-app:v1
+"docker push" requires exactly 1 argument.
+See 'docker push --help'.
+
+Usage:  docker push [OPTIONS] NAME[:TAG]
+
+Push an image or a repository to a registry
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker push python-app thosictarunacr.io/python-app:v1 .
+"docker push" requires exactly 1 argument.
+See 'docker push --help'.
+
+Usage:  docker push [OPTIONS] NAME[:TAG]
+
+Push an image or a repository to a registry
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker push thosictarunacr.io/python-app:v1 .
+"docker push" requires exactly 1 argument.
+See 'docker push --help'.
+
+Usage:  docker push [OPTIONS] NAME[:TAG]
+
+Push an image or a repository to a registry
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker push thosictarunacr.io/python-app:v1 
+The push refers to repository [thosictarunacr.io/python-app]
+Get https://thosictarunacr.io/v2/: dial tcp: lookup thosictarunacr.io: no such host
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker login thosictarunacr.azurecr.io
+Username: thosictarunacr
+Password: 
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker tag python-app thosictarunacr.io/python-app:v1
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker push thosictarunacr.io/python-app:v1 
+The push refers to repository [thosictarunacr.io/python-app]
+Get https://thosictarunacr.io/v2/: dial tcp: lookup thosictarunacr.io: no such host
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker push thosictarunacr.azurecr.io/python-app:v1 
+The push refers to repository [thosictarunacr.azurecr.io/python-app]
+An image does not exist locally with the tag: thosictarunacr.azurecr.io/python-app
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker tag python-app thosictarunacr.azureacr.io/python-app:v1
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker push thosictarunacr.azurecr.io/python-app:v1 
+The push refers to repository [thosictarunacr.azurecr.io/python-app]
+An image does not exist locally with the tag: thosictarunacr.azurecr.io/python-app
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker tag python-app thosictarunacr.azurecr.io/python-app:v1
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ sudo docker push thosictarunacr.azurecr.io/python-app:v1 
+The push refers to repository [thosictarunacr.azurecr.io/python-app]
+ae12ad165ddb: Pushed 
+5282a189ce8c: Pushed 
+bea17bc83bde: Pushed 
+e6c5004ee77f: Pushed 
+997b8e79e84f: Pushed 
+3054512b6f71: Pushed 
+ae2d55769c5e: Pushed 
+e2ef8a51359d: Pushed 
+v1: digest: sha256:552af0242eede5c38f5787a100eaab61595bdd416c0caa887c0936ebb52cb452 size: 1995

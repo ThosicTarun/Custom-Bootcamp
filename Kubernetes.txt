@@ -1,0 +1,51 @@
+labuser@ip-172-31-14-241:~$ cd Desktop
+labuser@ip-172-31-14-241:~/Desktop$ cd 'New Folder'
+labuser@ip-172-31-14-241:~/Desktop/New Folder$ cd kubernetes/
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl apply -f kubernetes/deployment.yaml
+Error from server (NotFound): the server could not find the requested resource
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ az aks get-credentials --resource-group thosictarunrg --name thosictarunkcluster
+Merged "thosictarunkcluster" as current context in /home/labuser/.kube/config
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl apply -f kubernetes/deployment.yaml
+error: the path "kubernetes/deployment.yaml" does not exist
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl apply -f deployment.yaml
+error: error parsing deployment.yaml: error converting YAML to JSON: yaml: line 15: could not find expected ':'
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl apply -f deployment.yaml
+error: error parsing deployment.yaml: error converting YAML to JSON: yaml: line 15: could not find expected ':'
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl apply -f deployment.yaml
+error: error parsing deployment.yaml: error converting YAML to JSON: yaml: line 15: could not find expected ':'
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl apply -f deployment.yaml
+error: error parsing deployment.yaml: error converting YAML to JSON: yaml: line 15: could not find expected ':'
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl apply -f deployment.yaml
+deployment.apps/python-app created
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl apply -f service.yaml
+error: error parsing service.yaml: error converting YAML to JSON: yaml: line 3: mapping values are not allowed in this context
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl apply -f service.yaml
+service/python-app created
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl get svc python-app
+NAME         TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
+python-app   LoadBalancer   10.0.252.167   20.241.199.208   80:32073/TCP   33s
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl get pods
+NAME                          READY   STATUS             RESTARTS   AGE
+python-app-7f65cb8954-mfgm4   0/1     ImagePullBackOff   0          6m19s
+python-app-7f65cb8954-v98jr   0/1     ImagePullBackOff   0          6m19s
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+python-app   0/2     2            0           6m46s
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl get svc python-app
+NAME         TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
+python-app   LoadBalancer   10.0.252.167   20.241.199.208   80:32073/TCP   33s
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl get pods
+NAME                          READY   STATUS             RESTARTS   AGE
+python-app-7f65cb8954-mfgm4   0/1     ImagePullBackOff   0          6m19s
+python-app-7f65cb8954-v98jr   0/1     ImagePullBackOff   0          6m19s
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+python-app   0/2     2            0           6m46s
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ ^C
+labuser@ip-172-31-14-241:~/Desktop/New Folder/kubernetes$ kubectl get pods
+NAME                          READY   STATUS         RESTARTS   AGE
+python-app-7f65cb8954-mfgm4   0/1     ErrImagePull   0          21m
+python-app-7f65cb8954-v98jr   0/1     ErrImagePull   0          21m
+
+
+

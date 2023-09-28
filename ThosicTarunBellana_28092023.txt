@@ -1,0 +1,4 @@
+ACR - Azure Container Register
+ACR -> Docker Image
+AKS - Azure Kubernetes Services
+AKS -> Cluster
