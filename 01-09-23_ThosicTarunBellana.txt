@@ -1,3 +1,4 @@
+By Thosic Tarun Bellana
 Types of Joins:
 Inner join
 Left join
