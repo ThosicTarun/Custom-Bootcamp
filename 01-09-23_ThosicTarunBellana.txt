@@ -19,3 +19,4 @@ working with :
 
 Indexing ( Heaps, Clustered and Non-Clustered Indexes , Column store Indexes )
 	
+This is The Change
